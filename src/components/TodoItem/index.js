@@ -1,17 +1,19 @@
-import axios from "axios";
-// eslint-disable-next-line
 import React from "react";
+// import './style.css'
 
-const BASE_URL = "http://localhost:3000";
+const Todo  =(props)=>{
 
-export const getAllTodos = () => {
-  return axios.get(`${BASE_URL}/todo`);
-};
+  return (
+    <>
+      <li>
+        {props.todos.name}
+        <span onClick={() => props.deletitem(props.todos.todoId)}>
+          Delete
+        </span>
+        <i onClick={()=> props.editeitem(props.todos.todoName)}> edite</i>
+      </li>
+    </>
+  );
+}
 
-export const addTodo = (todo) => {
-  return axios.post(`${BASE_URL}/todo`, todo);
-};
-
-export const deleteTodo = (id) => {
-  return axios.delete(`${BASE_URL}/todo/${id}`);
-};
+export default Todo;

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// eslint-disable-next-line
+import TodoItem from "../TodoItem";
 // import "./style.css";
+
+const BASE_URL = "http://localhost:5000";
 
 const Todos = () => {
   const [todos, setTodos] = useState([]);
@@ -11,14 +15,23 @@ const Todos = () => {
   }, []);
 
   const getTodos = async () => {
-    const res = await axios.post("http://localhost:5000/todo/getAll", {});
+    const res = await axios.post(`${BASE_URL}/res`, {});
     setTodos(res.data);
   };
 
-//   const createTodo = async () => {
-//     const res = await axios.post("http://localhost:5000/todo/getAll", {});
-//     setTodos(res.data);
-//   };
+//   const NweUser = () => {
+//     const ob = {
+//       id: todos.length + 1,
+//       email: AddinputSignvalue,
+//       password: AddinputSignPass,
+//     };  
+//     axios.post(`${BASE_URL}/users/addNew`, ob)
+//     .then(() => console.log(" item Created "))
+//     .catch((err) => {
+//       console.error(err);
+//     });
+//   console.log(todos);
+// };
 
   return (
     <div className="todosWrapper">
